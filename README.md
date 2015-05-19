@@ -21,6 +21,11 @@ furiganaTextView.contents = contents
 
 For more configurable properties, see `/src/FuriganaTextView.swift`.
 
+### Building and Deployment Target
+
+* Builds with Xcode 6.3 and Swift 1.2
+* Supports iOS 7 and above
+
 ### Known Issues
 * The `textContainerInset` property of the wrapped `UITextView` seems not working correctly.
 * Furiganas displayed in vertical writing is not implemented yet.
