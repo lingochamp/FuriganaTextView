@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Wi5-mt-wKS">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <scenes>
+        <!--Furiganas-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wIG-EB-H99" customClass="FuriganaTextView" customModule="demo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wIG-EB-H99" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="E5n-eO-sy7"/>
+                            <constraint firstItem="wIG-EB-H99" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="bnb-df-bo9"/>
+                            <constraint firstItem="wIG-EB-H99" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="eBo-ww-aGo"/>
+                            <constraint firstAttribute="trailing" secondItem="wIG-EB-H99" secondAttribute="trailing" id="hHT-en-d4B"/>
+                            <constraint firstItem="wIG-EB-H99" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="rTL-1H-o1l"/>
+                            <constraint firstItem="wIG-EB-H99" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="ydj-po-hcp"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eBo-ww-aGo"/>
+                                <exclude reference="ydj-po-hcp"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Furiganas" id="fJo-u3-Wa7"/>
+                    <connections>
+                        <outlet property="textView" destination="wIG-EB-H99" id="3dc-dB-x26"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1616" y="1318"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="SqQ-bg-L4S">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Wi5-mt-wKS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="kdm-eq-oRf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="EK0-ze-vy7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M3m-U1-tkH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="917" y="1318"/>
+        </scene>
+    </scenes>
+</document>
