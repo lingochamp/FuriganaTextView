@@ -23,8 +23,8 @@ For more configurable properties, see `/src/FuriganaTextView.swift`.
 
 ### Building and Deployment Target
 
-* Builds with Xcode 6.3 and Swift 1.2
-* Supports iOS 7 and above
+* Builds with __Xcode 6.3__ and __Swift 1.2__
+* Supports __iOS 7 and above__
 
 ### Known Issues
 * The `textContainerInset` property of the wrapped `UITextView` seems not working correctly.
