@@ -1,6 +1,8 @@
 # FuriganaTextView
 A simple wrapper view for UITextView that can display Furiganas.
 
+![Example](https://raw.githubusercontent.com/Liulishuo-iOS/FuriganaTextView/master/img/example.png)
+
 ### How to Use
 ```swift
 
