@@ -11,8 +11,9 @@ let furiganas = [
 ]
 let contents = NSAttributedString(string: "田中さん、中華料理を食べたことありますか。")
 
-// Tell FuriganaTextView about the furiganas(an array of Furigana struct) 
-// and the contents to display(a NSAttributedString)
+// Tell FuriganaTextView about 
+// the furiganas (which is an array of the Furigana struct) 
+// and the contents to display (a NSAttributedString)
 furiganaTextView.furiganas = furiganas
 furiganaTextView.contents = contents
 
