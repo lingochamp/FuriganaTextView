@@ -30,7 +30,10 @@ For more configurable properties, see `/src/FuriganaTextView.swift`.
 
 ### Why not CTRubyAnnotation and CoreText
 
-FuriganaTextView is built on top of TextKit and treats furiganas as custom attributes on the contents NSAttributedString.
+`FuriganaTextView` is built on top of TextKit and treats furiganas as custom attributes on the contents `NSAttributedString`.
+
+The custom furigana attributes can coexist with any other text attributes (e.g. `NSFontAttributeName`, `NSForegroundColorAttributeName`, etc.).
+
 We built it this way because we want to support iOS 7, and we want to take advantage of the high level features TextKit API offeres.
 
 ### Known Issues
