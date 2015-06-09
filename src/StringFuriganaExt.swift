@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Furigana
+public struct Furigana
 {
   let text: String
   let original: String
@@ -23,11 +23,11 @@ struct Furigana
   }
 }
 
-let kFuriganaAttributeName = "com.liulishuo.Furigana"
+public let kFuriganaAttributeName = "com.liulishuo.Furigana"
 
 private let kFuriganaRepresentationFormatter = "|"
 
-func FuriganaStringRepresentation(furigana: Furigana) -> NSString
+public func FuriganaStringRepresentation(furigana: Furigana) -> NSString
 {
   let values: NSArray = [
     furigana.text,
@@ -37,19 +37,19 @@ func FuriganaStringRepresentation(furigana: Furigana) -> NSString
   return values.componentsJoinedByString(kFuriganaRepresentationFormatter)
 }
 
-func FuriganaTextFromStringRepresentation(string: NSString) -> NSString?
+public func FuriganaTextFromStringRepresentation(string: NSString) -> NSString?
 {
   return string.componentsSeparatedByString(kFuriganaRepresentationFormatter).first as? NSString
 }
 
-func FuriganaOriginalTextFromStringrepresentation(string: NSString) -> NSString?
+public func FuriganaOriginalTextFromStringrepresentation(string: NSString) -> NSString?
 {
   return string.componentsSeparatedByString(kFuriganaRepresentationFormatter).last as? NSString
 }
 
 private let kCharLength = 1
 
-extension NSString
+public extension NSString
 {
   
   func substringAtIndex(index: Int) -> String

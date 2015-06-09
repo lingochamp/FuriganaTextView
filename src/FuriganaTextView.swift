@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct FuriganaTextStyle
+public struct FuriganaTextStyle
 {
   let hostingLineHeightMultiple: CGFloat
   let textOffsetMultiple: CGFloat
@@ -16,7 +16,7 @@ struct FuriganaTextStyle
 
 // MARK: - Base Class
 
-class FuriganaTextView: UIView
+public class FuriganaTextView: UIView
 {
   
   // MARK: - Public
@@ -205,7 +205,7 @@ extension FuriganaTextView
 extension FuriganaTextView
 {
   
-  override func intrinsicContentSize() -> CGSize
+  override public func intrinsicContentSize() -> CGSize
   {
     if let textView = underlyingTextView
     {

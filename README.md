@@ -1,6 +1,8 @@
 # FuriganaTextView
 A simple wrapper view for UITextView that can display Furiganas.
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 ![Example](https://raw.githubusercontent.com/Liulishuo-iOS/FuriganaTextView/master/img/example.png)
 
 ## Usage
