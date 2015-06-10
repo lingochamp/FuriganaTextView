@@ -10,12 +10,12 @@ import Foundation
 
 public struct Furigana
 {
-  let text: String
-  let original: String
-  let range: NSRange
-  let UUID: NSUUID = NSUUID()
+  public let text: String
+  public let original: String
+  public let range: NSRange
+  public let UUID: NSUUID = NSUUID()
   
-  init(text: String, original: String, range: NSRange)
+  public init(text: String, original: String, range: NSRange)
   {
     self.text = text
     self.original = original
@@ -52,12 +52,12 @@ private let kCharLength = 1
 public extension NSString
 {
   
-  func substringAtIndex(index: Int) -> String
+  public func substringAtIndex(index: Int) -> String
   {
     return substringWithRange(NSMakeRange(index, kCharLength))
   }
 
-  func filteredString(predicateBlock: (NSString) -> Bool) -> NSString
+  public func filteredString(predicateBlock: (NSString) -> Bool) -> NSString
   {
     var result = ""
     
@@ -71,7 +71,7 @@ public extension NSString
     return result
   }
   
-  func enumerateCharacters(enumeration: (Int, NSString) -> Void)
+  public func enumerateCharacters(enumeration: (Int, NSString) -> Void)
   {
     for i in 0..<length
     {
