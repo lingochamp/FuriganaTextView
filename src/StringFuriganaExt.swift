@@ -39,12 +39,12 @@ public func FuriganaStringRepresentation(furigana: Furigana) -> NSString
 
 public func FuriganaTextFromStringRepresentation(string: NSString) -> NSString?
 {
-  return string.componentsSeparatedByString(kFuriganaRepresentationFormatter).first as? NSString
+  return string.componentsSeparatedByString(kFuriganaRepresentationFormatter).first
 }
 
 public func FuriganaOriginalTextFromStringrepresentation(string: NSString) -> NSString?
 {
-  return string.componentsSeparatedByString(kFuriganaRepresentationFormatter).last as? NSString
+  return string.componentsSeparatedByString(kFuriganaRepresentationFormatter).last
 }
 
 private let kCharLength = 1

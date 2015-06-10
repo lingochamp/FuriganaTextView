@@ -13,7 +13,7 @@ class FuriganaWordKerner: NSObject, NSLayoutManagerDelegate
   
   // MARK: - NSLayoutManager Delegate
   
-  func layoutManager(layoutManager: NSLayoutManager, shouldGenerateGlyphs glyphs: UnsafePointer<CGGlyph>, properties props: UnsafePointer<NSGlyphProperty>, characterIndexes charIndexes: UnsafePointer<Int>, font aFont: UIFont!, forGlyphRange glyphRange: NSRange) -> Int
+  func layoutManager(layoutManager: NSLayoutManager, shouldGenerateGlyphs glyphs: UnsafePointer<CGGlyph>, properties props: UnsafePointer<NSGlyphProperty>, characterIndexes charIndexes: UnsafePointer<Int>, font aFont: UIFont, forGlyphRange glyphRange: NSRange) -> Int
   {
     let glyphCount = glyphRange.length
     let textStorageString = layoutManager.textStorage!.string as NSString
@@ -22,7 +22,7 @@ class FuriganaWordKerner: NSObject, NSLayoutManagerDelegate
     for i in 0..<glyphCount
     {
       let charIndex = charIndexes[i]
-      if let furiganaValue = layoutManager.textStorage!.attribute(kFuriganaAttributeName, atIndex: charIndex, effectiveRange: nil) as? NSString
+      if let _ = layoutManager.textStorage!.attribute(kFuriganaAttributeName, atIndex: charIndex, effectiveRange: nil) as? NSString
       {
         if textStorageString.substringAtIndex(charIndex) == kDefaultFuriganaKerningControlCharacter
         {
@@ -54,7 +54,7 @@ class FuriganaWordKerner: NSObject, NSLayoutManagerDelegate
   {
     if layoutManager.textStorage!.attribute(kFuriganaAttributeName, atIndex: charIndex, effectiveRange: nil) != nil
     {
-      return .WhitespaceAction
+      return .Whitespace
     }
     
     return action
@@ -89,7 +89,7 @@ class FuriganaWordKerner: NSObject, NSLayoutManagerDelegate
   func layoutManager(layoutManager: NSLayoutManager, shouldBreakLineByWordBeforeCharacterAtIndex charIndex: Int) -> Bool
   {
     var effectiveRange: NSRange = NSMakeRange(0, 0)
-    if let furiganaAttributeValue = layoutManager.textStorage?.attribute(kFuriganaAttributeName, atIndex: charIndex, effectiveRange: &effectiveRange) as? NSString
+    if let _ = layoutManager.textStorage?.attribute(kFuriganaAttributeName, atIndex: charIndex, effectiveRange: &effectiveRange) as? NSString
     {
       return charIndex == effectiveRange.location
     }

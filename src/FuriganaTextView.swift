@@ -125,19 +125,19 @@ public class FuriganaTextView: UIView
     return textView
   }
   
-  private func fullLayoutConstraints(view: UIView) -> [AnyObject]
+  private func fullLayoutConstraints(view: UIView) -> [NSLayoutConstraint]
   {
-    view.setTranslatesAutoresizingMaskIntoConstraints(false)
+    view.translatesAutoresizingMaskIntoConstraints = false
     
     let vertical = NSLayoutConstraint.constraintsWithVisualFormat(
       "V:|-(0)-[view]-(0)-|",
-      options: nil,
+      options: [],
       metrics: nil,
       views: ["view" : view])
     
     let horizontal = NSLayoutConstraint.constraintsWithVisualFormat(
       "H:|-(0)-[view]-(0)-|",
-      options: nil,
+      options: [],
       metrics: nil,
       views: ["view" : view])
 
@@ -158,7 +158,7 @@ extension FuriganaTextView
       if let validFuriganas = furiganas
       {
         var inserted = 0
-        for (_, furigana) in enumerate(validFuriganas)
+        for (_, furigana) in validFuriganas.enumerate()
         {
           var furiganaRange = furigana.range
           
@@ -209,7 +209,7 @@ extension FuriganaTextView
   {
     if let textView = underlyingTextView
     {
-      var intrinsicSize = textView.sizeThatFits(CGSize(width: CGRectGetWidth(bounds), height: CGFloat.max))
+      let intrinsicSize = textView.sizeThatFits(CGSize(width: CGRectGetWidth(bounds), height: CGFloat.max))
       
       // [Yan Li]
       // There is a time that we have to multiply the result by the line height multiple

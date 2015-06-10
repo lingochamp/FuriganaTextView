@@ -35,7 +35,7 @@ class FuriganaLayoutManager: NSLayoutManager
 
     let attributesToEnumerate = characterRangeForGlyphRange(glyphsToShow, actualGlyphRange: nil)
     
-    textStorage?.enumerateAttribute(kFuriganaAttributeName, inRange: attributesToEnumerate, options: .allZeros) { (attributeValue, range, _) in
+    textStorage?.enumerateAttribute(kFuriganaAttributeName, inRange: attributesToEnumerate, options: []) { (attributeValue, range, _) in
       if let furiganaStringRepresentation = attributeValue as? String
       {
         if let furiganaText = FuriganaTextFromStringRepresentation(furiganaStringRepresentation)

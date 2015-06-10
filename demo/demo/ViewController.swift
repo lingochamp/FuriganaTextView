@@ -64,14 +64,8 @@ extension ViewController
   }
   
   private var exampleFont: UIFont {
-    if let fontDescriptor = UIFontDescriptor(name: "Hiragino Mincho ProN", size: 24).fontDescriptorWithSymbolicTraits(.TraitBold)
-    {
-      return UIFont(descriptor: fontDescriptor, size: 24)
-    }
-    else
-    {
-      return UIFont.boldSystemFontOfSize(24)
-    }
+    let fontDescriptor = UIFontDescriptor(name: "Hiragino Mincho ProN", size: 24).fontDescriptorWithSymbolicTraits(.TraitBold)
+    return UIFont(descriptor: fontDescriptor, size: 24)
   }
   
   private var exampleFontSansSerif: UIFont {
