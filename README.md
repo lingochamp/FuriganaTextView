@@ -5,6 +5,23 @@ A simple wrapper view for UITextView that can display Furiganas.
 
 ![Example](https://raw.githubusercontent.com/Liulishuo-iOS/FuriganaTextView/master/img/example.png)
 
+## Install
+
+#### Install using Carthage
+
+`FuriganaTextView` has been tested to work well with [Carthage](https://github.com/Carthage/Carthage). To install using Carthage:
+
+1. First, you need to add `github "lingochamp/FuriganaTextView"` to your `Cartfile` .
+2. When Carthage done building the frameworks, you will find a framework named `LLS.framework` contains the files needed for intergrating `FuriganaTextView` .
+3. Drag `LLS.framework` into your project.
+4. In the source file where you want to use `FuriganaTextView`, add `import LLS`, then you are ready to go.
+
+#### Install Manually
+
+Clone the repo then add all files inside `/src` into your project. 
+
+Then you are ready to go.
+
 ## Usage
 
 ```swift
