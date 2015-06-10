@@ -10,8 +10,8 @@ import UIKit
 
 public struct FuriganaTextStyle
 {
-  let hostingLineHeightMultiple: CGFloat
-  let textOffsetMultiple: CGFloat
+  public let hostingLineHeightMultiple: CGFloat
+  public let textOffsetMultiple: CGFloat
 }
 
 // MARK: - Base Class
@@ -21,14 +21,14 @@ public class FuriganaTextView: UIView
   
   // MARK: - Public
   
-  var scrollEnabled: Bool = true
-  var alignment: NSTextAlignment = .Left
+  public var scrollEnabled: Bool = true
+  public var alignment: NSTextAlignment = .Left
   
-  var furiganaEnabled = true
-  var furiganaTextStyle = FuriganaTextStyle(hostingLineHeightMultiple: 1.6, textOffsetMultiple: 0)
-  var furiganas: [Furigana]?
+  public var furiganaEnabled = true
+  public var furiganaTextStyle = FuriganaTextStyle(hostingLineHeightMultiple: 1.6, textOffsetMultiple: 0)
+  public var furiganas: [Furigana]?
   
-  var contents: NSAttributedString?
+  public var contents: NSAttributedString?
   {
     set
     {
