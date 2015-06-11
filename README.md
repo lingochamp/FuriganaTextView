@@ -48,6 +48,12 @@ For more configurable properties, see `/src/FuriganaTextView.swift`.
 * Builds with __Xcode 6.3__ and __Swift 1.2__
 * Supports __iOS 7 and above__
 
+#### Swift 2.0
+
+* `FuriganaTextView` is currently supporting Swift 2.0 with Xcode 7.0 beta 1
+* Swift 2.0 compatible version can be found at the `swift2` branch
+* The `swift2` branch will be merged to `master` when Xcode 7.0 reaches GM
+
 ## Why not CTRubyAnnotation and CoreText
 
 `FuriganaTextView` is built on top of TextKit and treats furiganas as custom attributes on the contents `NSAttributedString`.
