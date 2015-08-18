@@ -50,7 +50,7 @@ For more configurable properties, see `/src/FuriganaTextView.swift`.
 
 #### Swift 2.0
 
-* `FuriganaTextView` is currently supporting Swift 2.0 with Xcode 7.0 beta 1
+* `FuriganaTextView` is currently supporting Swift 2.0 with Xcode 7.0 beta 5
 * Swift 2.0 compatible version can be found at the `swift2` branch
 * The `swift2` branch will be merged to `master` when Xcode 7.0 reaches GM
 
