@@ -45,14 +45,8 @@ For more configurable properties, see `/src/FuriganaTextView.swift`.
 
 ## Requirements
 
-* Builds with __Xcode 6.3__ and __Swift 1.2__
+* Builds with __Xcode 7.0__ and __Swift 2.0__
 * Supports __iOS 7 and above__
-
-#### Swift 2.0
-
-* `FuriganaTextView` is currently supporting Swift 2.0 with Xcode 7.0 beta 6
-* Swift 2.0 compatible version can be found at the `swift2` branch
-* The `swift2` branch will be merged to `master` when Xcode 7.0 reaches GM
 
 ## Why not CTRubyAnnotation and CoreText
 
