@@ -88,10 +88,11 @@ class FuriganaWordKerner: NSObject, NSLayoutManagerDelegate
   
   func layoutManager(layoutManager: NSLayoutManager, shouldBreakLineByWordBeforeCharacterAtIndex charIndex: Int) -> Bool
   {
-    var effectiveRange: NSRange = NSMakeRange(0, 0)
-    if let _ = layoutManager.textStorage?.attribute(kFuriganaAttributeName, atIndex: charIndex, effectiveRange: &effectiveRange) as? NSString
+    var longestEffectiveRange: NSRange = NSMakeRange(0, 0)
+    if let textStorage = layoutManager.textStorage,
+       let _ = textStorage.attribute(kFuriganaAttributeName, atIndex: charIndex, longestEffectiveRange: &longestEffectiveRange, inRange: NSMakeRange(0, textStorage.length)) as? NSString
     {
-      return charIndex == effectiveRange.location
+      return charIndex == longestEffectiveRange.location
     }
     else
     {
