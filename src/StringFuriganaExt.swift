@@ -13,7 +13,7 @@ public struct Furigana
   public let text: String
   public let original: String
   public let range: NSRange
-  public let UUID: NSUUID = NSUUID()
+  public let UUID: Foundation.UUID = Foundation.UUID()
   
   public init(text: String, original: String, range: NSRange)
   {
@@ -27,24 +27,24 @@ public let kFuriganaAttributeName = "com.liulishuo.Furigana"
 
 private let kFuriganaRepresentationFormatter = "|"
 
-public func FuriganaStringRepresentation(furigana: Furigana) -> NSString
+public func FuriganaStringRepresentation(_ furigana: Furigana) -> NSString
 {
   let values: NSArray = [
     furigana.text,
-    furigana.UUID.UUIDString,
+    furigana.UUID.uuidString,
     furigana.original
   ]
-  return values.componentsJoinedByString(kFuriganaRepresentationFormatter)
+  return values.componentsJoined(by: kFuriganaRepresentationFormatter) as NSString
 }
 
-public func FuriganaTextFromStringRepresentation(string: NSString) -> NSString?
+public func FuriganaTextFromStringRepresentation(_ string: NSString) -> NSString?
 {
-  return string.componentsSeparatedByString(kFuriganaRepresentationFormatter).first
+  return string.components(separatedBy: kFuriganaRepresentationFormatter).first as NSString?
 }
 
-public func FuriganaOriginalTextFromStringrepresentation(string: NSString) -> NSString?
+public func FuriganaOriginalTextFromStringrepresentation(_ string: NSString) -> NSString?
 {
-  return string.componentsSeparatedByString(kFuriganaRepresentationFormatter).last
+  return string.components(separatedBy: kFuriganaRepresentationFormatter).last as NSString?
 }
 
 private let kCharLength = 1
@@ -52,12 +52,12 @@ private let kCharLength = 1
 public extension NSString
 {
   
-  public func substringAtIndex(index: Int) -> String
+  public func substringAtIndex(_ index: Int) -> String
   {
-    return substringWithRange(NSMakeRange(index, kCharLength))
+    return substring(with: NSMakeRange(index, kCharLength))
   }
 
-  public func filteredString(predicateBlock: (NSString) -> Bool) -> NSString
+  public func filteredString(_ predicateBlock: (NSString) -> Bool) -> NSString
   {
     var result = ""
     
@@ -68,14 +68,14 @@ public extension NSString
       }
     }
     
-    return result
+    return result as NSString
   }
   
-  public func enumerateCharacters(enumeration: (Int, NSString) -> Void)
+  public func enumerateCharacters(_ enumeration: (Int, NSString) -> Void)
   {
     for i in 0..<length
     {
-      enumeration(i, substringAtIndex(i))
+      enumeration(i, substringAtIndex(i) as NSString)
     }
   }
   

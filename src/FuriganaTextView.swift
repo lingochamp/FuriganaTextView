@@ -16,19 +16,19 @@ public struct FuriganaTextStyle
 
 // MARK: - Base Class
 
-public class FuriganaTextView: UIView
+open class FuriganaTextView: UIView
 {
   
   // MARK: - Public
   
-  public var scrollEnabled: Bool = true
-  public var alignment: NSTextAlignment = .Left
+  open var scrollEnabled: Bool = true
+  open var alignment: NSTextAlignment = .left
   
-  public var furiganaEnabled = true
-  public var furiganaTextStyle = FuriganaTextStyle(hostingLineHeightMultiple: 1.6, textOffsetMultiple: 0)
-  public var furiganas: [Furigana]?
+  open var furiganaEnabled = true
+  open var furiganaTextStyle = FuriganaTextStyle(hostingLineHeightMultiple: 1.6, textOffsetMultiple: 0)
+  open var furiganas: [Furigana]?
   
-  public var contents: NSAttributedString?
+  open var contents: NSAttributedString?
   {
     set
     {
@@ -49,14 +49,14 @@ public class FuriganaTextView: UIView
   
   // MARK: - Private
 
-  private var mutableContents: NSMutableAttributedString?
-  private weak var underlyingTextView: UITextView?
+  fileprivate var mutableContents: NSMutableAttributedString?
+  fileprivate weak var underlyingTextView: UITextView?
   
   // [Yan Li]
   // A strong reference is needed, because NSLayoutManagerDelegate is unowned by the manager
-  private var furiganaWordKerner: FuriganaWordKerner?
+  fileprivate var furiganaWordKerner: FuriganaWordKerner?
   
-  private func setup()
+  fileprivate func setup()
   {
     underlyingTextView?.removeFromSuperview()
     
@@ -70,7 +70,7 @@ public class FuriganaTextView: UIView
     }
   }
   
-  private func setupFuriganaView()
+  fileprivate func setupFuriganaView()
   {
     if let validContents = mutableContents
     {
@@ -100,7 +100,7 @@ public class FuriganaTextView: UIView
     }
   }
   
-  private func setupRegularView()
+  fileprivate func setupRegularView()
   {
     if let validContents = mutableContents
     {
@@ -113,30 +113,30 @@ public class FuriganaTextView: UIView
     }
   }
   
-  private func textViewWithTextContainer(textContainer: NSTextContainer?) -> UITextView
+  fileprivate func textViewWithTextContainer(_ textContainer: NSTextContainer?) -> UITextView
   {
     let textView = UITextView(frame: bounds, textContainer: textContainer)
-    textView.editable = false
-    textView.scrollEnabled = scrollEnabled
+    textView.isEditable = false
+    textView.isScrollEnabled = scrollEnabled
     textView.alwaysBounceVertical = true
-    textView.textContainerInset = UIEdgeInsetsZero
+    textView.textContainerInset = .zero
     textView.textContainer.lineFragmentPadding = 0
     
     return textView
   }
   
-  private func fullLayoutConstraints(view: UIView) -> [NSLayoutConstraint]
+  fileprivate func fullLayoutConstraints(_ view: UIView) -> [NSLayoutConstraint]
   {
     view.translatesAutoresizingMaskIntoConstraints = false
     
-    let vertical = NSLayoutConstraint.constraintsWithVisualFormat(
-      "V:|-(0)-[view]-(0)-|",
+    let vertical = NSLayoutConstraint.constraints(
+      withVisualFormat: "V:|-(0)-[view]-(0)-|",
       options: [],
       metrics: nil,
       views: ["view" : view])
     
-    let horizontal = NSLayoutConstraint.constraintsWithVisualFormat(
-      "H:|-(0)-[view]-(0)-|",
+    let horizontal = NSLayoutConstraint.constraints(
+      withVisualFormat: "H:|-(0)-[view]-(0)-|",
       options: [],
       metrics: nil,
       views: ["view" : view])
@@ -151,14 +151,14 @@ public class FuriganaTextView: UIView
 extension FuriganaTextView
 {
   
-  private func addFuriganaAttributes()
+  fileprivate func addFuriganaAttributes()
   {
     if let validContents = mutableContents
     {
       if let validFuriganas = furiganas
       {
         var inserted = 0
-        for (_, furigana) in validFuriganas.enumerate()
+        for (_, furigana) in validFuriganas.enumerated()
         {
           var furiganaRange = furigana.range
           
@@ -168,14 +168,14 @@ extension FuriganaTextView
           
           if furiganaLength > contentsLenght
           {
-            let currentAttributes = validContents.attributesAtIndex(furiganaRange.location + inserted, effectiveRange: nil)
+            let currentAttributes = validContents.attributes(at: furiganaRange.location + inserted, effectiveRange: nil)
             let kerningString = NSAttributedString(string: kDefaultFuriganaKerningControlCharacter, attributes: currentAttributes)
             
             let endLocation = furigana.range.location + furigana.range.length + inserted
-            validContents.insertAttributedString(kerningString, atIndex: endLocation)
+            validContents.insert(kerningString, at: endLocation)
             
             let startLocation = furigana.range.location + inserted
-            validContents.insertAttributedString(kerningString, atIndex: startLocation)
+            validContents.insert(kerningString, at: startLocation)
             
             let insertedLength = (kDefaultFuriganaKerningControlCharacter as NSString).length * 2
             inserted += insertedLength
@@ -192,7 +192,7 @@ extension FuriganaTextView
         }
         
         let fullTextRange = NSMakeRange(0, (validContents.string as NSString).length)
-        validContents.fixAttributesInRange(fullTextRange)
+        validContents.fixAttributes(in: fullTextRange)
         mutableContents = validContents
       }      
     }
@@ -205,11 +205,11 @@ extension FuriganaTextView
 extension FuriganaTextView
 {
   
-  override public func intrinsicContentSize() -> CGSize
+  override open var intrinsicContentSize: CGSize
   {
     if let textView = underlyingTextView
     {
-      let intrinsicSize = textView.sizeThatFits(CGSize(width: CGRectGetWidth(bounds), height: CGFloat.max))
+      let intrinsicSize = textView.sizeThatFits(CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude))
       
       // [Yan Li]
       // There is a time that we have to multiply the result by the line height multiple
@@ -221,7 +221,7 @@ extension FuriganaTextView
     }
     else
     {
-      return CGSizeZero
+      return CGSize.zero
     }
   }
   
