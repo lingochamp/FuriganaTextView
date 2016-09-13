@@ -46,8 +46,8 @@ extension ViewController
       Furigana(text: "ば", original: "場", range: NSMakeRange(32, 1)),
       
       // Furiganas for 'サーモン刺身。狐、哺乳綱ネコ目（食肉目）イヌ科イヌ亜科の一部。'
-      Furigana(text: "きつね", original: "狐", range: NSMakeRange(59, 1)),
       Furigana(text: "さしみ", original: "刺身", range: NSMakeRange(46, 2)),
+      Furigana(text: "きつね", original: "狐", range: NSMakeRange(59, 1)),
     ]
   }
   
@@ -64,7 +64,7 @@ extension ViewController
     contents.addAttribute(NSForegroundColorAttributeName, value: UIColor.purple, range: NSMakeRange(29, 1))
     contents.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSMakeRange(30, 3))
     
-    contents.append(NSAttributedString(string: "サーモン刺身、哺乳綱ネコ目（食肉目狐）イヌ科イヌ亜科の一部。\n\n", attributes: [NSFontAttributeName : exampleFont]))
+    contents.append(NSAttributedString(string: "サーモン刺身、哺乳綱ネコ目（食肉目狐）イヌ科イヌ亜科の一部。\n\n", attributes: [NSFontAttributeName : exampleFontSansSerif]))
     contents.addAttribute(NSForegroundColorAttributeName, value: UIColor.orange, range: NSMakeRange(59, 1))
     
     return contents;
