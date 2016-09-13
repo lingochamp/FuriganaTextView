@@ -62,6 +62,7 @@ class FuriganaLayoutManager: NSLayoutManager
     
     let paragrapStyle = NSMutableParagraphStyle()
     paragrapStyle.alignment = .center
+    paragrapStyle.lineBreakMode = .byClipping
     
     var furiganaAttributes = [
       NSFontAttributeName : furiganaFont,
