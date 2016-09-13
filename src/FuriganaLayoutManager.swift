@@ -29,39 +29,40 @@ class FuriganaLayoutManager: NSLayoutManager
   
   var textOffsetMultiple: CGFloat = 0
   
-  override func drawGlyphsForGlyphRange(glyphsToShow: NSRange, atPoint origin: CGPoint)
+  override func drawGlyphs(forGlyphRange glyphsToShow: NSRange, at origin: CGPoint)
   {
-    super.drawGlyphsForGlyphRange(glyphsToShow, atPoint: origin)
+    super.drawGlyphs(forGlyphRange: glyphsToShow, at: origin)
 
-    let attributesToEnumerate = characterRangeForGlyphRange(glyphsToShow, actualGlyphRange: nil)
+    let attributesToEnumerate = characterRange(forGlyphRange: glyphsToShow, actualGlyphRange: nil)
     
-    textStorage?.enumerateAttribute(kFuriganaAttributeName, inRange: attributesToEnumerate, options: []) { (attributeValue, range, _) in
+    textStorage?.enumerateAttribute(kFuriganaAttributeName, in: attributesToEnumerate, options: []) { (attributeValue, range, _) in
       if let furiganaStringRepresentation = attributeValue as? String
       {
-        if let furiganaText = FuriganaTextFromStringRepresentation(furiganaStringRepresentation)
+        if let furiganaText = FuriganaTextFromStringRepresentation(furiganaStringRepresentation as NSString)
         {
-          let font = self.textStorage!.attribute(NSFontAttributeName, atIndex: range.location, effectiveRange: nil) as! UIFont
-          let color = self.textStorage!.attribute(NSForegroundColorAttributeName, atIndex: range.location, effectiveRange: nil) as? UIColor
+          let font = self.textStorage!.attribute(NSFontAttributeName, at: range.location, effectiveRange: nil) as! UIFont
+          let color = self.textStorage!.attribute(NSForegroundColorAttributeName, at: range.location, effectiveRange: nil) as? UIColor
           self.drawFurigana(furiganaText, characterRange: range, characterFont: font, textColor: color)
         }
       }
     }
   }
   
-  private func drawFurigana(text: NSString, characterRange: NSRange, characterFont: UIFont, textColor: UIColor?)
+  fileprivate func drawFurigana(_ text: NSString, characterRange: NSRange, characterFont: UIFont, textColor: UIColor?)
   {
-    let glyphRange = glyphRangeForCharacterRange(characterRange, actualCharacterRange: nil)
-    let glyphContainer = textContainerForGlyphAtIndex(glyphRange.location, effectiveRange: nil)!
-    var glyphBounds = boundingRectForGlyphRange(glyphRange, inTextContainer: glyphContainer)
+    let glyphRange = self.glyphRange(forCharacterRange: characterRange, actualCharacterRange: nil)
+    let glyphContainer = textContainer(forGlyphAt: glyphRange.location, effectiveRange: nil)!
+    var glyphBounds = boundingRect(forGlyphRange: glyphRange, in: glyphContainer)
 
     let characterFontSize = characterFont.pointSize
     let furiganaFontSize = characterFontSize / kDefaultFuriganaFontMultiple
-    let furiganaFont = UIFont.systemFontOfSize(furiganaFontSize)
+    let furiganaFont = UIFont.systemFont(ofSize: furiganaFontSize)
 
-    glyphBounds.origin.y = CGRectGetMinY(glyphBounds) + CGRectGetHeight(glyphBounds) * textOffsetMultiple
+    glyphBounds.origin.y = glyphBounds.minY + glyphBounds.height * textOffsetMultiple
     
     let paragrapStyle = NSMutableParagraphStyle()
-    paragrapStyle.alignment = .Center
+    paragrapStyle.alignment = .center
+    paragrapStyle.lineBreakMode = .byClipping
     
     var furiganaAttributes = [
       NSFontAttributeName : furiganaFont,
@@ -73,11 +74,11 @@ class FuriganaLayoutManager: NSLayoutManager
       furiganaAttributes[NSForegroundColorAttributeName] = color
     }
     
-    text.drawInRect(glyphBounds, withAttributes: furiganaAttributes)
+    text.draw(in: glyphBounds, withAttributes: furiganaAttributes)
     
     if kFuriganaDebugging
     {
-      UIColor.redColor().setStroke()
+      UIColor.red.setStroke()
       UIBezierPath(rect: glyphBounds).stroke()
     }
   }
