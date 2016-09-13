@@ -28,8 +28,8 @@ Then you are ready to go.
 
 // Prepare furigana contents
 // Note: The order of the furiganas provided to the FuriganaTextView is important.
-// It must be ascending in the manner of the location of the range,
-// otherwise the furiganas may not be rendered at correct position.
+// It must be ascending in manner of the location of the range,
+// otherwise the furiganas may not be rendered at the correct position.
 let furiganas = [
   Furigana(text: "た", original: "田", range: NSMakeRange(0, 1)),
   Furigana(text: "なか", original: "中", range: NSMakeRange(1, 1)),
