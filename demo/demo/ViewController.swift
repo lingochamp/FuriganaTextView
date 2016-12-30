@@ -16,9 +16,14 @@ class ViewController: UIViewController
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    
+        
     textView.furiganas = exampleFuriganas
     textView.contents = exampleContents
+    
+    // after the contents has been set, the `contentView` will be referencing the underlying UITextView
+    // we can customize the UITextView the way we want
+    textView.contentView?.isScrollEnabled = false
+    textView.contentView?.backgroundColor = UIColor(white: 0.9, alpha: 1)
   }
 
 }

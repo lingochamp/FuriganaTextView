@@ -21,8 +21,9 @@ open class FuriganaTextView: UIView
   
   // MARK: - Public
   
-  open var scrollEnabled: Bool = true
-  open var alignment: NSTextAlignment = .left
+  public var contentView: UITextView? {
+    return underlyingTextView
+  }
   
   open var furiganaEnabled = true
   open var furiganaTextStyle = FuriganaTextStyle(hostingLineHeightMultiple: 1.6, textOffsetMultiple: 0)
@@ -143,6 +144,14 @@ open class FuriganaTextView: UIView
 
     return vertical + horizontal
   }
+  
+  // MARK: - Deprecated
+  
+  @available(*, deprecated)
+  open var scrollEnabled: Bool = true
+  
+  @available(*, deprecated)
+  open var alignment: NSTextAlignment = .left
   
 }
 
