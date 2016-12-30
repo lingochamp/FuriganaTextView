@@ -42,9 +42,12 @@ let contents = NSAttributedString(string: "田中さん、中華料理を食べ�
 furiganaTextView.furiganas = furiganas
 furiganaTextView.contents = contents
 
-```
+// To customize the text view, use the contentView
+// contentView will return a valid UITextView after
+// the contents has been set
+furiganaTextView.contentView?.backgroundColor = UIColor.lightGray
 
-For more configurable properties, see `/src/FuriganaTextView.swift`.
+```
 
 ## Requirements
 
